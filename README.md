@@ -21,13 +21,13 @@ Musik yang **kamu** punya dan musik yang **boleh kamu putar** itu dua hal berbed
 keduanya sama-sama tidak nyaman:
 
 - Layanan streaming berlangganan: harganya naik terus, ada iklan, dan katalognya
- ditentukan label — lagu favorit bisa hilang kapan saja
+  ditentukan label — lagu favorit bisa hilang kapan saja
 - Koleksi sendiri (MP3 beli/ripping/CD) berceceran di folder; diakses dari luar rumah
- harus buka file manager lewat remote, tanpa antrean, lirik, atau equalizer
+  harus buka file manager lewat remote, tanpa antrean, lirik, atau equalizer
 - Solusi NAS klasik memang menyimpan file, tapi UI-nya file manager — bukan pemutar
- musik: tidak ada crossfade, visualizer, rekomendasi, atau tampilan "now playing"
+  musik: tidak ada crossfade, visualizer, rekomendasi, atau tampilan "now playing"
 - Aplikasi jadi-jadian menyuruh upload koleksi pribadi ke cloud orang lain — koleksi
- kamu numpang di server yang bukan milikmu, dan bisa hilang bersama layanannya
+  kamu numpang di server yang bukan milikmu, dan bisa hilang bersama layanannya
 
 ## VibeMZ
 
@@ -83,23 +83,23 @@ milik sendiri, diputar dari server sendiri, dengan pengalaman dengar yang serius
 
 ```mermaid
 flowchart LR
- App["Next.js 16 App Router<br/>API routes + admin auth"]
+  App["Next.js 16 App Router<br/>API routes + admin auth"]
 
- subgraph Klien["Klien (tipis, tanpa data)"]
- Web["Browser / PWA"]
- APK["Android APK<br/>Capacitor WebView"]
- EXE["Windows App<br/>Tauri shell"]
- end
+  subgraph Klien["Klien (tipis, tanpa data)"]
+    Web["Browser / PWA"]
+    APK["Android APK<br/>Capacitor WebView"]
+    EXE["Windows App<br/>Tauri shell"]
+  end
 
- Web --> App
- APK --> App
- EXE --> App
+  Web --> App
+  APK --> App
+  EXE --> App
 
- App --> DB[("SQLite<br/>Prisma ORM")]
- App -->|"upload & stream"| R2[("Cloudflare R2<br/>custom domain CDN")]
- App -->|"cari & ambil audio"| YT["YouTube<br/>yt-dlp + stream resolver"]
- Admin["Admin dashboard"] --> App
- R2 -->|"byte-range langsung"| Web
+  App --> DB[("SQLite<br/>Prisma ORM")]
+  App -->|"upload & stream"| R2[("Cloudflare R2<br/>custom domain CDN")]
+  App -->|"cari & ambil audio"| YT["YouTube<br/>yt-dlp + stream resolver"]
+  Admin["Admin dashboard"] --> App
+  R2 -->|"byte-range langsung"| Web
 ```
 
 **Alur satu lagu:** admin mengunggah MP3 → ditulis ke cache lokal dan diunggah ke R2 →
@@ -126,11 +126,11 @@ Capacitor (Android) · Tauri (Windows) · Docker · PM2
 ## Yang membuatnya tidak sekadar "folder MP3 dengan UI"
 
 - **Latensi diukur, bukan dikira-kira** — direct CDN ~1,1–1,3 s untuk file 5 MB dan TTFB
- ~0,16 s dengan beban server nol; blob cache membuat lagu yang sudah di-preload instan
+  ~0,16 s dengan beban server nol; blob cache membuat lagu yang sudah di-preload instan
 - **Tahan dipakai orang lain** — rate limit per IP, validasi magic bytes, guard admin di
- semua endpoint, dan ban IP untuk penyalahgunaan
+  semua endpoint, dan ban IP untuk penyalahgunaan
 - **Tahan mesin mati** — cron maintenance mengejar jadwal yang terlewat, backup harian,
- dan eviction hanya jalan setelah R2 diverifikasi
+  dan eviction hanya jalan setelah R2 diverifikasi
 
 ---
 
