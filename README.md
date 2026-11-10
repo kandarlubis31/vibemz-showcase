@@ -42,6 +42,24 @@ milik sendiri, diputar dari server sendiri, dengan pengalaman dengar yang serius
 | **Tambah dari YouTube** | Cari dan simpan lagu dari YouTube saat koleksi lokal belum punya — jadi bagian perpustakaan yang sama |
 | **Audio lewat CDN** | File dilayani dari Cloudflare R2 lewat custom domain; server tidak jadi bottleneck saat beberapa orang memutar bersamaan |
 
+## Tampilan
+
+<div align="center">
+
+**Beranda** — semua lagu di server sendiri, playlist di sidebar, dan pemutar mengambang yang bisa dibuka dari halaman mana pun.
+
+![Beranda](screenshots/01-beranda.webp)
+
+**Discover** — trending YouTube langsung di dalam aplikasi, lengkap dengan waveform visualizer di pemutar.
+
+![Discover](screenshots/02-discover.webp)
+
+| Discover di HP | Lirik fullscreen |
+| :---: | :---: |
+| ![Discover di HP](screenshots/03-mobile-discover.webp) | ![Lirik fullscreen](screenshots/04-mobile-lirik.webp) |
+
+</div>
+
 ## Fitur
 
 ### Pemutar
